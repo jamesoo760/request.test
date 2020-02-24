@@ -37,9 +37,27 @@
   <script src="my_test_1.js"></script>
 
   <link rel="stylesheet" type="text/css" href="my_test_1.css">
+  <script type="text/javascript">
+    function fIframe() {
+      console.log('main function execute success');
+    }
+    function exec_main(){
+      if(typeof(exec_obj)=='undefined'){
+        exec_obj = document.createElement('iframe');
+        exec_obj.name = 'tmp_frame';
+        exec_obj.src = 'http://127.0.0.1:49851/smartIndustry.html';
+        exec_obj.style.display = 'none';
+        document.body.appendChild(exec_obj);
+      }else{
+        exec_obj.src = 'http://127.0.0.1:49851/smartIndustry.html?' + Math.random();
+      }
+    }
+  </script>
 </head>
 
 <body>
+  <p>B.html iframe</p>
+  <p><input type="button" value="exec main function" onclick="exec_main()"></p>
   <div id="container"></div>
   <div id="fullscreen_button" class="fullscreen-button fullscreen-open" title="Toggle fullscreen mode"></div>
   
